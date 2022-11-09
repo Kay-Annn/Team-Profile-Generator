@@ -6,42 +6,57 @@ class Team {
         this.teamName = teamName;
         this.teamMembers = []
     }
-
+    /**
+     * 
+     * @returns team name
+     */
     getTeamName() {
         return this.teamName
     }
 
+     /**
+     * 
+     * @returns team size
+     */
     getTeamSize() {
         return this.teamMembers.length
     }
 
+     /**
+     * 
+     * @returns team members
+     */
     getTeamMembers() {
         return this.teamMembers
     }
 
-    getTeamMemberById(id) {
-        return this.teamMembers.filter(id => id.id = id)
-    }
-
+     /**
+     * 
+     * @returns add team member 
+     */
     addTeamMembers(newTeamMember) {
         this.teamMembers.push(newTeamMember)
     }
 
+     /**
+     * 
+     * @returns creates team profile
+     */
     generateTeamProfile() {
         const cardMembers = this.getTeamMembers()
         let cardString = '';
-        let i = 0;
-        for (i = 0; i < cardMembers.length; i++) {
+        let i;
+        for (i = cardMembers.length - 1; i >= 0; i--) {
             let list = '';
-            if (cardMembers.role === "Manager") {
+            if (cardMembers[i].role === "Manager") {
                 list = ` <li class="list-group-item">Id: ${cardMembers[i].id}</li>
                 <li class="list-group-item">E-mail: ${cardMembers[i].email}</li>
-                <li class="list-group-item">E-mail: ${cardMembers[i].officeNumber}</li>`
+                <li class="list-group-item">Office Number: ${cardMembers[i].officeNumber}</li>`
             }
             else {
                 list = ` <li class="list-group-item">Id: ${cardMembers[i].id}</li>
             <li class="list-group-item">E-mail: ${cardMembers[i].email}</li>
-            <li class="list-group-item">E-mail: ${cardMembers[i].gitHub}</li>`
+            <li class="list-group-item">GitHub: ${cardMembers[i].gitHub}</li>`
             }
             let card = `<div class="card" style="width: 18rem;">
             <div class="card-body">
@@ -56,7 +71,7 @@ class Team {
             cardString += card;
         }
 
-        console.log(this.getTeamMembers());
+      
         var html = createHTML({
             title: 'example',
             scriptAsync: true,

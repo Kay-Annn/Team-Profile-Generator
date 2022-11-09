@@ -102,13 +102,13 @@ class Employees extends Team {
   }
 
   async addToTeam() {
-
     const newEmployeeObj = {
       name: this.name,
       role: this.role,
       id: this.id,
       email: this.email,
     }
+   
     if (this.role === "Manager") {
       newEmployeeObj.officeNumber = this.officeNumber
     }
