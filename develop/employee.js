@@ -36,38 +36,59 @@ const MenuQuestions = [
   }
 ]
 
-const EmployeeQuestions = [
+const EngineerQuestions = [
   {
     type: 'input',
-    message: 'Please provide your team member name: ',
-    name: 'EmployeeName',
-  },
-
-  {
-    type: 'list',
-    message: 'Please provide your team member role: ',
-    choices: ["Engineer", "Intern"],
-    name: 'EmployeeRole',
+    message: 'Please provide your engineer name: ',
+    name: 'EngineerName',
   },
 
   {
     type: 'input',
-    message: 'Please provide your team member ID: ',
-    name: 'Employeeid',
+    message: 'Please provide your engineer ID: ',
+    name: 'EngineerId',
   },
 
   {
     type: 'input',
-    message: 'Please provide your team member e-mail: ',
-    name: 'Employeeemail',
+    message: 'Please provide your engineer e-mail: ',
+    name: 'EngineerEmail',
   },
 
   {
     type: 'input',
-    message: 'Please provide your team member GitHub: ',
-    name: 'EmployeeGitHub',
+    message: 'Please provide your engineer GitHub: ',
+    name: 'EngineerGitHub',
   }
 ]
+
+
+const InternQuestions = [
+  {
+    type: 'input',
+    message: 'Please provide your Intern name: ',
+    name: 'InternName',
+  },
+
+  {
+    type: 'input',
+    message: 'Please provide your Intern ID: ',
+    name: 'InternId',
+  },
+
+  {
+    type: 'input',
+    message: 'Please provide your intern e-mail: ',
+    name: 'InternEmail',
+  },
+
+  {
+    type: 'input',
+    message: 'Please provide your intern school: ',
+    name: 'InternSchool',
+  }
+]
+
 
 
 class Employees extends Team {
@@ -78,7 +99,8 @@ class Employees extends Team {
     this.id = "";
     this.email = "";
     this.gitHub = "";
-    this.officeNumber = ""
+    this.officeNumber = "";
+    this.school = "";
   }
 
   async createManager() {
@@ -91,13 +113,23 @@ class Employees extends Team {
     this.addToTeam()
   }
 
-  async createEmployee() {
-    const employeeInfo = await inquirer.prompt(EmployeeQuestions)
-    this.name = employeeInfo.EmployeeName;
-    this.role = employeeInfo.EmployeeRole;
-    this.id = employeeInfo.Employeeid;
-    this.email = employeeInfo.Employeeemail;
-    this.gitHub = employeeInfo.EmployeeGitHub
+  async createEngineer() {
+    const employeeInfo = await inquirer.prompt(EngineerQuestions)
+    this.name = employeeInfo.EngineerName;
+    this.role = "Engineer";
+    this.id = employeeInfo.EngineerId;
+    this.email = employeeInfo.EngineerEmail;
+    this.gitHub = employeeInfo.EngineerGitHub;
+    this.addToTeam()
+  }
+
+  async createIntern() {
+    const employeeInfo = await inquirer.prompt(InternQuestions)
+    this.name = employeeInfo.InternName;
+    this.role = "Intern";
+    this.id = employeeInfo.InternId;
+    this.email = employeeInfo.InternEmail;
+    this.school = employeeInfo.InternSchool;
     this.addToTeam()
   }
 
@@ -108,21 +140,29 @@ class Employees extends Team {
       id: this.id,
       email: this.email,
     }
-   
+
     if (this.role === "Manager") {
       newEmployeeObj.officeNumber = this.officeNumber
     }
-    else {
+    if (this.role === "Engineer") {
       newEmployeeObj.gitHub = this.gitHub
+    }
+
+    if (this.role === "Intern") {
+      newEmployeeObj.school = this.school
     }
 
     this.addTeamMembers(newEmployeeObj)
     const menuInfo = await inquirer.prompt(MenuQuestions)
-    if (menuInfo.Menu === "Add an engineer" || menuInfo.Menu === "Add an intern") {
-      this.createEmployee()
-
+    if (menuInfo.Menu === "Add an engineer") {
+      this.createEngineer()
     }
-    else {
+
+    if (menuInfo.Menu === "Add an intern") {
+      this.createIntern()
+    }
+
+    if (menuInfo.Menu != "Add an intern" && menuInfo.Menu != "Add an engineer") {
       this.generateTeamProfile();
     }
   }

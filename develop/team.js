@@ -14,34 +14,34 @@ class Team {
         return this.teamName
     }
 
-     /**
-     * 
-     * @returns team size
-     */
+    /**
+    * 
+    * @returns team size
+    */
     getTeamSize() {
         return this.teamMembers.length
     }
 
-     /**
-     * 
-     * @returns team members
-     */
+    /**
+    * 
+    * @returns team members
+    */
     getTeamMembers() {
         return this.teamMembers
     }
 
-     /**
-     * 
-     * @returns add team member 
-     */
+    /**
+    * 
+    * @returns add team member 
+    */
     addTeamMembers(newTeamMember) {
         this.teamMembers.push(newTeamMember)
     }
 
-     /**
-     * 
-     * @returns creates team profile
-     */
+    /**
+    * 
+    * @returns creates team profile
+    */
     generateTeamProfile() {
         const cardMembers = this.getTeamMembers()
         let cardString = '';
@@ -50,14 +50,24 @@ class Team {
             let list = '';
             if (cardMembers[i].role === "Manager") {
                 list = ` <li class="list-group-item">Id: ${cardMembers[i].id}</li>
-                <li class="list-group-item">E-mail: ${cardMembers[i].email}</li>
+                <li class="list-group-item">E-mail:<a href="mailto:${cardMembers[i].email}">${cardMembers[i].email}</a></li>
                 <li class="list-group-item">Office Number: ${cardMembers[i].officeNumber}</li>`
             }
-            else {
+
+
+            if (cardMembers[i].role === "Engineer") {
                 list = ` <li class="list-group-item">Id: ${cardMembers[i].id}</li>
-            <li class="list-group-item">E-mail: ${cardMembers[i].email}</li>
-            <li class="list-group-item">GitHub: ${cardMembers[i].gitHub}</li>`
+                <li class="list-group-item">E-mail:<a href="mailto:${cardMembers[i].email}">${cardMembers[i].email}</a></li>
+                <li class="list-group-item">GitHub:<a href=${`https://github.com/${cardMembers[i].gitHub}`} target="_blank">${cardMembers[i].gitHub}</a></li>`
             }
+
+
+            if (cardMembers[i].role === "Intern") {
+                list = ` <li class="list-group-item">Id: ${cardMembers[i].id}</li>
+                <li class="list-group-item">E-mail:<a href="mailto:${cardMembers[i].email}">${cardMembers[i].email}</a></li>
+                <li class="list-group-item">School: ${cardMembers[i].school}</li>`
+            }
+
             let card = `<div class="card" style="width: 18rem;">
             <div class="card-body">
                 <h5 class="card-name">${cardMembers[i].name}</h5>
@@ -71,7 +81,6 @@ class Team {
             cardString += card;
         }
 
-      
         var html = createHTML({
             title: 'example',
             scriptAsync: true,
