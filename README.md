@@ -15,12 +15,10 @@ Jest (for testing)
 Create-html (for generating the html)
 
 ## Walkthrough Video
-
-
+https://watch.screencastify.com/v/WWojj9Vg4GW4AsNIQhhm
 
 ## Screenshot of Functionality
-
-
+![Team generator screenshot](https://user-images.githubusercontent.com/56706010/200994121-5897335c-c889-4bdd-a987-42cb36e8c8fc.png)
 
 ## License 
 The license used for this application is MIT - please review license in repository. 
