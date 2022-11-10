@@ -205,7 +205,7 @@ async function generateTeamProfile() {
     }
 
     var html = createHTML({
-        title: 'example',
+        title: 'My',
         scriptAsync: true,
         script: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js',
         css: ['./style.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css'],
