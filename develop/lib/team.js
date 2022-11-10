@@ -85,20 +85,16 @@ class Team {
             title: 'My Team',
             scriptAsync: true,
             script: 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js',
-            css: ['style.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css'],
+            css: ['./dist/style.css', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css'],
             lang: 'en',
             dir: 'rtl',
             head: '<meta name="description" content="example">',
-            body: `<h1>${this.getTeamName()}<h1> <div class="card-container"> ${cardString}</div>`,
-            favicon: 'favicon.png'
+            body: `<div><h1 class ="h1Container">${this.getTeamName()}</h1> </div> <div class="card-container"> ${cardString}</div>`,
+            })
 
-        })
-
-        fs.writeFile('index.html', html, function (err) {
+        fs.writeFile('./dist/index.html', html, function (err) {
             if (err) console.log(err)
         })
     }
-
 }
-
 module.exports = Team;
