@@ -14,7 +14,12 @@ Inquirer (for prompted questions)
 Jest (for testing)
 Create-html (for generating the html)
 
+## Walkthrough Video
+
+
+
 ## Screenshot of Functionality
+
 
 
 ## License 
