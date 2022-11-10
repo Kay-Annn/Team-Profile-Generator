@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const Employees = require("./employee.js");
+const Employees = require("../lib/employee.js");
 
 
 class Engineer extends Employees {

@@ -1,4 +1,4 @@
-const Employees = require('../employee.js');
+const Employees = require('../lib/employee.js');
 
 describe("Employee Class", () => {
     describe("testing employee class", () => {
