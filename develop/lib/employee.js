@@ -1,5 +1,5 @@
 const inquirer = require('inquirer');
-const Team = require("./team.js");
+const Team = require("../lib/team.js");
 
 
 class Employees {

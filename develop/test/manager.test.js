@@ -1,4 +1,4 @@
-const Manager = require('../manager.js');
+const Manager = require('../lib/manager.js');
 
 describe("Employee Class", () => {
     describe("testing employee class", () => {
